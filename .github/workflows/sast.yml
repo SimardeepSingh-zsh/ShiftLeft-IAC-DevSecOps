@@ -1,0 +1,20 @@
+name: SAST (Semgrep)
+
+on:
+  pull_request:
+    paths:
+      - "app/**"
+
+jobs:
+  semgrep:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Semgrep
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: security/semgrep/semgrep.yml
+          generateSarif: "true"
+          publishToken: ""

@@ -1,0 +1,7 @@
+rules:
+  - id: no-eval
+    patterns:
+      - pattern: eval($X)
+    message: "Avoid eval; it can lead to RCE."
+    severity: ERROR
+    languages: [javascript]

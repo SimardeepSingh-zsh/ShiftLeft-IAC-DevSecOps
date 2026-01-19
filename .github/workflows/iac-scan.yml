@@ -1,0 +1,29 @@
+name: IaC Security Scan (Checkov)
+
+on:
+  pull_request:
+    paths:
+      - "iac/**"
+  push:
+    branches: [ main ]
+    paths:
+      - "iac/**"
+
+jobs:
+  checkov:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run Checkov on Terraform
+        uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: iac/terraform
+          config_file: security/iac/checkov-config.yaml
+
+      - name: Run Checkov on Kubernetes
+        uses: bridgecrewio/checkov-action@v12
+        with:
+          directory: iac/k8s
+          config_file: security/iac/checkov-config.yaml
