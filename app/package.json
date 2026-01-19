@@ -1,0 +1,17 @@
+{
+  "name": "shiftleft-iac-devsecops-2026-app",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node test/app.test.js",
+    "lint": "eslint src",
+    "ci": "npm run lint && npm test"
+  },
+  "dependencies": {
+    "express": "^4.19.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0"
+  }
+}
